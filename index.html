@@ -11,8 +11,6 @@
 
     :root {
       --rood: #c0392b;
-      --rood-donker: #922b21;
-      --rood-licht: #f9ecea;
       --grijs: #2c2c2c;
       --zand: #f5f0eb;
       --wit: #ffffff;
@@ -29,8 +27,8 @@
     /* HERO */
     .hero {
       position: relative;
-      height: 100vh;
-      min-height: 580px;
+      height: 100svh;
+      min-height: 480px;
       overflow: hidden;
     }
 
@@ -45,7 +43,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
     }
 
     .hero-content {
@@ -55,12 +53,12 @@
       right: 0;
       text-align: center;
       color: var(--wit);
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
     .hero-content h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(4rem, 12vw, 9rem);
+      font-size: clamp(3.5rem, 15vw, 9rem);
       font-weight: 300;
       letter-spacing: 0.25em;
       line-height: 1;
@@ -69,30 +67,30 @@
     }
 
     .hero-content .tagline {
-      font-family: 'Jost', sans-serif;
       font-weight: 300;
-      font-size: clamp(0.85rem, 2vw, 1.1rem);
-      letter-spacing: 0.3em;
+      font-size: clamp(0.7rem, 3vw, 1rem);
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      margin-top: 16px;
-      opacity: 0.9;
+      margin-top: 14px;
+      opacity: 0.88;
       animation: fadeUp 1s ease 0.2s both;
     }
 
     .scroll-hint {
       position: absolute;
-      bottom: 24px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      color: rgba(255,255,255,0.6);
-      font-size: 0.7rem;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.65rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       animation: bounce 2s infinite;
+      white-space: nowrap;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -105,43 +103,44 @@
     .over {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 520px;
+      min-height: 480px;
     }
 
     .over-tekst {
       background: var(--rood);
       color: var(--wit);
-      padding: 80px 60px;
+      padding: 64px 52px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
     .over-tekst .label {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       opacity: 0.7;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .over-tekst h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 300;
       line-height: 1.2;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .over-tekst p {
       font-weight: 300;
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.95rem;
+      line-height: 1.85;
       opacity: 0.92;
     }
 
     .over-foto {
       overflow: hidden;
+      min-height: 320px;
     }
 
     .over-foto img {
@@ -150,6 +149,7 @@
       object-fit: cover;
       object-position: center;
       transition: transform 0.6s ease;
+      display: block;
     }
 
     .over-foto img:hover {
@@ -157,18 +157,21 @@
     }
 
     /* INFO SECTIE */
-    .info {
+    .info-wrapper {
       background: var(--zand);
-      padding: 80px 40px;
+      padding: 64px 24px;
+    }
+
+    .info {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 48px;
-      max-width: 1100px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     .info-blok h3 {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--rood);
@@ -177,63 +180,66 @@
 
     .info-blok p, .info-blok a {
       font-weight: 300;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       line-height: 1.9;
       color: var(--grijs);
       text-decoration: none;
+      display: block;
     }
 
     .info-blok a:hover {
       color: var(--rood);
     }
 
-    .info-blok .dag {
+    .dag {
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid rgba(0,0,0,0.08);
-      padding: 6px 0;
-      font-size: 0.9rem;
+      padding: 7px 0;
+      font-size: 0.88rem;
     }
 
-    .info-blok .dag span:first-child {
-      font-weight: 400;
-    }
+    .dag span:first-child { font-weight: 400; }
+    .dag.gesloten span:last-child { color: #bbb; }
 
-    .info-blok .dag.gesloten span:last-child {
-      color: #aaa;
-    }
-
-    /* REVIEW BUTTON */
+    /* REVIEW */
     .review-sectie {
       background: var(--wit);
       text-align: center;
-      padding: 72px 20px;
+      padding: 64px 24px;
       border-top: 1px solid rgba(0,0,0,0.07);
     }
 
     .review-sectie p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-size: clamp(1.2rem, 4vw, 1.7rem);
       font-weight: 300;
       font-style: italic;
       color: var(--grijs);
       margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .btn {
       display: inline-block;
       border: 1.5px solid var(--rood);
       color: var(--rood);
-      padding: 14px 36px;
+      padding: 14px 32px;
       font-family: 'Jost', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
       transition: all 0.25s ease;
+      /* Touch-friendly */
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
     }
 
-    .btn:hover {
+    .btn:hover, .btn:active {
       background: var(--rood);
       color: var(--wit);
     }
@@ -241,33 +247,77 @@
     /* FOOTER */
     footer {
       background: var(--grijs);
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.45);
       text-align: center;
       padding: 28px 20px;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      line-height: 1.8;
     }
 
     footer a {
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.45);
       text-decoration: none;
     }
 
-    /* MOBIEL */
-    @media (max-width: 768px) {
+    footer a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── MOBIEL ── */
+    @media (max-width: 680px) {
+
+      /* Hero */
+      .hero-content {
+        bottom: 48px;
+        padding: 0 20px;
+      }
+
+      /* Over ons: foto boven, tekst onder */
       .over {
         grid-template-columns: 1fr;
       }
+
+      .over-foto {
+        height: 260px;
+        order: -1;
+        min-height: unset;
+      }
+
       .over-tekst {
-        padding: 60px 32px;
+        padding: 48px 28px;
         order: 1;
       }
-      .over-foto {
-        height: 300px;
-        order: 0;
-      }
+
+      /* Info blokken onder elkaar */
       .info {
-        padding: 60px 28px;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .info-wrapper {
+        padding: 52px 28px;
+      }
+
+      /* Review */
+      .review-sectie {
+        padding: 52px 24px;
+      }
+
+      /* Footer wrapping */
+      footer {
+        font-size: 0.72rem;
+      }
+
+      footer .sep { display: none; }
+      footer br { display: block; }
+    }
+
+    /* Extra small (320px) */
+    @media (max-width: 360px) {
+      .over-tekst {
+        padding: 40px 20px;
+      }
+      .info-wrapper {
+        padding: 44px 20px;
       }
     }
   </style>
@@ -280,7 +330,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Sonaz</h1>
-      <p class="tagline">Damesmode · Amersfoort · Al meer dan 20 jaar</p>
+      <p class="tagline">Damesmode &nbsp;·&nbsp; Amersfoort &nbsp;·&nbsp; Al meer dan 20 jaar</p>
     </div>
     <div class="scroll-hint">↓ &nbsp; scroll</div>
   </section>
@@ -298,13 +348,13 @@
   </section>
 
   <!-- CONTACT & TIJDEN -->
-  <div style="background: var(--zand);">
+  <div class="info-wrapper">
     <div class="info">
       <div class="info-blok">
         <h3>Bezoek ons</h3>
         <p>Langestraat 74<br>3811 AJ Amersfoort</p>
         <br>
-        <a href="tel:0643855429">06 43 85 54 29</a><br>
+        <a href="tel:0643855429">06 43 85 54 29</a>
         <a href="https://www.facebook.com/sonazdamesmode/" target="_blank" rel="noopener">Facebook</a>
       </div>
 
@@ -329,7 +379,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Sonaz Damesmode &nbsp;·&nbsp; Langestraat 74, Amersfoort &nbsp;·&nbsp; <a href="https://www.facebook.com/sonazdamesmode/">Facebook</a></p>
+    <p>© 2025 Sonaz Damesmode <span class="sep">&nbsp;·&nbsp;</span><br> Langestraat 74, Amersfoort <span class="sep">&nbsp;·&nbsp;</span><br> <a href="https://www.facebook.com/sonazdamesmode/">Facebook</a></p>
   </footer>
 
 </body>
